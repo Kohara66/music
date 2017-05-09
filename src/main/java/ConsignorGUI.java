@@ -1,11 +1,7 @@
-import javafx.scene.control.ComboBox;
-
-import javax.swing.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Arc2D;
 
 /**
  * Created by Happy on 5/3/2017.
@@ -16,7 +12,7 @@ public class ConsignorGUI  extends JPanel {
     private JComboBox searchcomboBox1;
     private JTextField consignorNametextField1;
     private JTextField consignorPaytextField2;
-    private JTextField consignorOwetextField3;
+    private JTextField OwnerPaytextField3;
     private JTextField phoneNumbertextField2;
     private JTextField searchnametextField1;
     private JTextField salepricetextField1;
@@ -46,35 +42,35 @@ public class ConsignorGUI  extends JPanel {
                 String name = consignorNametextField1.getText();
                 String phoneNumber = phoneNumbertextField2.getText();
                 // Double consignorpay = Double.parseDouble(consignorPaytextField2.getText());
-                //Double consignorowe = Double.parseDouble(consignorOwntextField3.getText());
+                //Double consignorowe = Double.parseDouble(OwnerPaytextField3.getText());
                 Double sale = Double.parseDouble(salepricetextField1.getText());
                 double pay = (sale / 100) * 40;
-                double keep = (sale / 100) * 60;
+                double ownerKeep = (sale / 100) * 60;
 
-                consignor consignor = new consignor(name, phoneNumber, pay, keep); //consignorpay, consignorowe);
+                consignor consignor = new consignor(name, phoneNumber, pay, ownerKeep); //consignorpay, ownerKeep);
                 Main.addtoConsignor(consignor);
 
 
                 double price = Double.parseDouble(salepricetextField1.getText());
                 if (price < 0) {
-                    JOptionPane.showMessageDialog(ConsignorGUI, "enter album sale price");
+                    JOptionPane.showMessageDialog(ConsignorGUI, "Enter album sale price");
                     return;
                 }
 
                 double consignorPay = (price / 100) * 40;
                 consignorPaytextField2.setText(Double.toString(consignorPay));
 
-                double consignorOwe = (price / 100) * 60;
-                consignorOwetextField3.setText(Double.toString(consignorOwe));
+                double ownerPay = (price / 100) * 60;
+                OwnerPaytextField3.setText(Double.toString(ownerPay));
 
 
-                System.out.println(" to add " + price + " " + consignorPay + " " + consignorOwe);
+                System.out.println(" to add " + price + " " + consignorPay + " " + ownerPay);
 
-                boolean insertrow = albumDateModel.inserSale(price, consignorPay, consignorOwe);
+                boolean insertrow = albumDateModel.insertSale(price, consignorPay, ownerPay);
                 if (insertrow) {
                     Main.loadAllConsignor();
                 } else {
-                    JOptionPane.showMessageDialog(ConsignorGUI, "error adding information");
+                    JOptionPane.showMessageDialog(ConsignorGUI, "Error adding information");
                 }
             }
 

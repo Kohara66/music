@@ -99,7 +99,7 @@ public class SaleGUI {
             albumcomboBox1.addItem(albumID + " - " + album.get(albumID));
         }
     }
-    public JPanel getPanle(){
+    public JPanel getPanel(){
         return SaleGUI;
     }
 }

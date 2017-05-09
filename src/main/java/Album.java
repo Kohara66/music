@@ -17,7 +17,7 @@ public class Album {
         Category = category;
     }
 
-    public Album(String Title, String Artist, String Category, Double sellingPrice ){
+    public Album(String Title, String Artist, String Category, Double sellingPrice) {
         this.Title = Title;
         this.Artist = Artist;
         this.Category = Category;
@@ -27,6 +27,10 @@ public class Album {
 
     public double getSellingPrice() {
         return sellingPrice;
+    }
+
+    public void setSellingPrice(double sellingPrice) {
+        this.sellingPrice = sellingPrice;
     }
 
     public String getTitle() {

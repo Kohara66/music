@@ -8,11 +8,18 @@ import java.util.Date;
 /**
  * Created by Happy on 5/3/2017.
  */
+//This class can add and update the data i database for certain columns of data
+// columns like; Title column, artist, selling price and consignor ID 
+//for the use of an album table data grid in an Album Table GUI    
+//used part of movieRate model"hhttps:github.com/minneapolis-edu/Movies" code to set  my albumDateModel
+    
 public class albumDateModel   extends AbstractTableModel {
     int rowCount = 0;
     int columnCount = 0;
     ResultSet resultSet;
 
+
+    //constructor - using ResultSet to work out how many rows and columns we have.
     public albumDateModel(ResultSet rs) {
         this.resultSet = rs;
         setup();
@@ -24,7 +31,7 @@ public class albumDateModel   extends AbstractTableModel {
         try {
             columnCount = resultSet.getMetaData().getColumnCount();
         } catch (SQLException se) {
-            System.out.println("error count column" + se);
+            System.out.println("Error count column" + se);
         }
 
     }
@@ -45,15 +52,17 @@ public class albumDateModel   extends AbstractTableModel {
         rowCount = 0;
         try {
 
-
+            //moves cursor to the start..
             resultSet.beforeFirst();
+
+            //next() method moves the cursor forward one row and returns true if there is another row ahead
             while (resultSet.next()) {
                 rowCount++;
             }
             resultSet.beforeFirst();
         } catch (SQLException se) {
 
-            System.out.println("error counting rows " + se);
+            System.out.println("Error counting rows " + se);
         }
 
     }
@@ -67,12 +76,14 @@ public class albumDateModel   extends AbstractTableModel {
     @Override
     public Object getValueAt(int row, int column) {
         try {
+            //move to this row in the result set, rows are numbered like 1, 2, 3....
             resultSet.absolute(row + 1);
             Object O = resultSet.getObject(column + 1);
             return O;
             //O.toString();
         } catch (SQLException se) {
             System.out.println(se);
+            //display the text of the error message in th
             return se.toString();
 
         }
@@ -87,7 +98,7 @@ public class albumDateModel   extends AbstractTableModel {
         }
         return false;
     }
-
+     //Delete row, will return true if successful  or false otherwise
     public boolean deleteRow(int row) {
         try {
             resultSet.absolute(row + 1);
@@ -101,7 +112,7 @@ public class albumDateModel   extends AbstractTableModel {
         }
     }
 
-    public boolean inserRow(String Title, String Artist, String category, int sellingPrice) {
+    public boolean insertRow(String Title, String Artist, String category, int sellingPrice) {
         //move to insert row to each row
         try {
             resultSet.moveToInsertRow();
@@ -121,7 +132,7 @@ public class albumDateModel   extends AbstractTableModel {
 
     }
 
-    public boolean inserRow(String consignorName, String PhoneNumber) {
+    public boolean insertRow(String consignorName, String PhoneNumber) {
         try {
             resultSet.moveToInsertRow();
             resultSet.updateString(Main.consignorName, consignorName);
@@ -132,15 +143,20 @@ public class albumDateModel   extends AbstractTableModel {
             resultSet.insertRow();
             resultSet.moveToCurrentRow();
             fireTableDataChanged();
+            //change will go to DB but not reflected in this result set
+            // therefore no need to close/re-open result set to see latest data
+            //return true to the calling methods so we konw that the ResultSet was successfully updated and 
+            //it can request a new Resultset for this tablemodel
+            
             return true;
         } catch (SQLException e) {
-            System.out.println("error adding row");
+            System.out.println("Error adding row");
             System.out.println(e);
             return false;
         }
     }
 
-    public boolean inserSale(Date sale_date, Double amount) {
+    public boolean insertSale(Date sale_date, Double amount) {
         try {
             resultSet.moveToInsertRow();
             resultSet.updateDate(Main.sale_date, (java.sql.Date) sale_date);
@@ -151,7 +167,7 @@ public class albumDateModel   extends AbstractTableModel {
             fireTableDataChanged();
             return true;
         } catch (SQLException e) {
-            System.out.println("error adding row");
+            System.out.println("Error adding row");
             System.out.println(e);
             return false;
         }
@@ -165,13 +181,13 @@ public class albumDateModel   extends AbstractTableModel {
             return resultSet.getMetaData().getColumnName(column + 1);
 
         } catch (SQLException se) {
-            System.out.println("error feching column names" + se);
+            System.out.println("Error fetching column names" + se);
             return "?";
         }
     }
 
 
-    public boolean inserSale(double price, double consignorPay, double consignorOwe) {
+    public boolean insertSale(double price, double consignorPay, double consignorOwe) {
         try {
 
             resultSet.moveToInsertRow();
@@ -184,7 +200,7 @@ public class albumDateModel   extends AbstractTableModel {
             return true;
 
         } catch (SQLException e) {
-            System.out.println("error adding row");
+            System.out.println("Error adding row");
             System.out.println(e);
             return false;
         }

@@ -1,9 +1,7 @@
 import javax.swing.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Arc2D;
 
 
 /**
@@ -14,7 +12,7 @@ public class ConsignorAlbumSale extends JPanel {
     private JTable saletable1;
     private JTextField soldpricetextField1;
     private JTextField ConsignorPaytextField2;
-    private JTextField ConsignorOwetextField3;
+    private JTextField OwnerPaytextField3;
     private JButton addButton;
     private JButton quitButton;
     private JButton deleteButton;
@@ -36,12 +34,12 @@ public class ConsignorAlbumSale extends JPanel {
                 ConsignorPaytextField2.setText(Double.toString(consignorpay));
 
                 double consignorOwn = (price / 100) * 60;
-                ConsignorOwetextField3.setText(Double.toString(consignorOwn));
+                OwnerPaytextField3.setText(Double.toString(consignorOwn));
 
 
                 System.out.println(" to add " + price + " " + consignorpay + " " + consignorOwn);
 
-                boolean insertrow = albumDateModel.inserSale(price, consignorpay, consignorOwn);
+                boolean insertrow = albumDateModel.insertSale(price, consignorpay, consignorOwn);
                 if (insertrow){
                     Main.loadAllSales();
                 }else {
