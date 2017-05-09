@@ -9,10 +9,10 @@ import java.util.Date;
  * Created by Happy on 5/3/2017.
  */
 //This class can add and update the data i database for certain columns of data
-// columns like; Title column, artist, selling price and consignor ID 
-//for the use of an album table data grid in an Album Table GUI    
+// columns like; Title column, artist, selling price and consignor ID
+//for the use of an album table data grid in an Album Table GUI
 //used part of movieRate model"hhttps:github.com/minneapolis-edu/Movies" code to set  my albumDateModel
-    
+
 public class albumDateModel   extends AbstractTableModel {
     int rowCount = 0;
     int columnCount = 0;
@@ -138,16 +138,16 @@ public class albumDateModel   extends AbstractTableModel {
             resultSet.updateString(Main.consignorName, consignorName);
             resultSet.updateString(Main.consignorPhoneNumber, PhoneNumber);
             //resultSet.updateDouble((Main.consignorPay,consignorPay);
-            //resultSet.updateDouble(Main.consignorOwe, consignorOwn);
+            //resultSet.updateDouble(Main.ownerPay, consignorOwn);
 
             resultSet.insertRow();
             resultSet.moveToCurrentRow();
             fireTableDataChanged();
             //change will go to DB but not reflected in this result set
             // therefore no need to close/re-open result set to see latest data
-            //return true to the calling methods so we konw that the ResultSet was successfully updated and 
+            //return true to the calling methods so we konw that the ResultSet was successfully updated and
             //it can request a new Resultset for this tablemodel
-            
+
             return true;
         } catch (SQLException e) {
             System.out.println("Error adding row");
@@ -193,7 +193,7 @@ public class albumDateModel   extends AbstractTableModel {
             resultSet.moveToInsertRow();
             //resultSet.updateDouble(Main.saleprice, price);
             resultSet.updateDouble("consignorPay", consignorPay);
-            resultSet.updateDouble("consignorOwe", consignorOwe);
+            resultSet.updateDouble("ownerPay", consignorOwe);
             resultSet.insertRow();
             resultSet.moveToCurrentRow();
             fireTableDataChanged();

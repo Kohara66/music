@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Happy on 5/3/2017.
  */
-public class ConsignorAlbumSale extends JPanel {
+public class ConsignorAlbumSaleGUI extends JPanel {
     private JPanel ConsignorAlbumSale;
     private JTable saletable1;
     private JTextField soldpricetextField1;
@@ -18,7 +18,7 @@ public class ConsignorAlbumSale extends JPanel {
     private JButton deleteButton;
     private JPanel getJpanel;
 
-    ConsignorAlbumSale(final albumDateModel albumDateModel){
+    ConsignorAlbumSaleGUI(final albumDateModel albumDateModel){
         saletable1.setGridColor(Color.black);
         saletable1.setModel(albumDateModel);
         addButton.addActionListener(new ActionListener() {
@@ -26,24 +26,24 @@ public class ConsignorAlbumSale extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 double price = Double.parseDouble(soldpricetextField1.getText());
                 if (price < 0){
-                    JOptionPane.showMessageDialog(ConsignorAlbumSale, "enter album sale price");
+                    JOptionPane.showMessageDialog(ConsignorAlbumSale, "Enter album sale price");
                     return;
                 }
 
                 double consignorpay = (price / 100) * 40;
                 ConsignorPaytextField2.setText(Double.toString(consignorpay));
 
-                double consignorOwn = (price / 100) * 60;
-                OwnerPaytextField3.setText(Double.toString(consignorOwn));
+                double OwnerPay = (price / 100) * 60;
+                OwnerPaytextField3.setText(Double.toString(OwnerPay));
 
 
-                System.out.println(" to add " + price + " " + consignorpay + " " + consignorOwn);
+                System.out.println(" to add " + price + " " + consignorpay + " " + OwnerPay);
 
-                boolean insertrow = albumDateModel.insertSale(price, consignorpay, consignorOwn);
+                boolean insertrow = albumDateModel.insertSale(price, consignorpay, OwnerPay);
                 if (insertrow){
                     Main.loadAllSales();
                 }else {
-                    JOptionPane.showMessageDialog(ConsignorAlbumSale, "error adding information");
+                    JOptionPane.showMessageDialog(ConsignorAlbumSale, "Error adding information");
                 }
             }
         });

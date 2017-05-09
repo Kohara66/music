@@ -18,6 +18,7 @@ public class tabbedJframe extends JFrame {
         tabbedPane.add("Consignor GUI", new ConsignorGUI(Main.consignorDateModel).getPanel());
         tabbedPane.add("Sale GUI", new SaleGUI(Main.salesDateModel).getPanel());
 
+
         setVisible(true);
         pack();
 

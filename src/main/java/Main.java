@@ -320,7 +320,7 @@ public class Main {
             prep.setString(1, consignor.getConsignorName());
             prep.setString(2, consignor.getPhoneNumber());
             prep.setDouble(3, consignor.getConsignorPay());
-            prep.setDouble(4, consignor.getConsignorOwe());
+            prep.setDouble(4, consignor.getOwnerPay());
 
             prep.executeUpdate();
 
@@ -345,10 +345,10 @@ public class Main {
             // String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Elephant', 'The White Stripe', 'Rock', 6.20, TRUE  )";
 
             String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('James', '6516449977', 3.50, 2.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('John', '6516444573', 3.50, 2.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('Mary', '6516449987', 5.50, 3.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('Bob', '6126449972', 6.50, 4.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('Billyu', '6126449976', 6.50, 7.49)";
+           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('John', '6516444573', 3.50, 2.49)";
+           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Mary', '6516449987', 5.50, 3.49)";
+           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Bob', '6126449972', 6.50, 4.49)";
+           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Billyu', '6126449976', 6.50, 7.49)";
             statement.executeUpdate(addtable);
 
             String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-04-31', 10.50)";

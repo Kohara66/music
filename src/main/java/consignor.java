@@ -6,12 +6,12 @@ public class consignor {
     String consignorName;
     String phoneNumber;
     Double consignorPay;
-    Double consignorOwe;
-    public consignor(String name, String phoneNumber, double pay, double owe) {
+    Double ownerPay;
+    public consignor(String name, String phoneNumber, double pay, double owner) {
         this.consignorName = name;
         this.phoneNumber = phoneNumber;
         this.consignorPay = pay;
-        this.consignorOwe = owe;
+        this.ownerPay = owner;
     }
 
     public String getPhoneNumber() {
@@ -24,9 +24,9 @@ public class consignor {
         return consignorPay;
     }
 
-    public Double getConsignorOwe() {
+    public Double getOwnerPay() {
 
-        return consignorOwe;
+        return ownerPay;
     }
 
     public String getConsignorName() {
