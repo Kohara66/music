@@ -91,9 +91,10 @@ public class Main {
         //}
 
 
-        AlbumGUI albumGUI = new AlbumGUI(albumDateModel);
-        ConsignorGUI consignorGUI = new ConsignorGUI(albumDateModel);
-        SaleGUI saleGUI = new SaleGUI(albumDateModel);
+        tabbedJframe tabbedJframe = new tabbedJframe();
+        //AlbumGUI albumGUI = new AlbumGUI(albumDateModel);
+        //ConsignorGUI consignorGUI = new ConsignorGUI(albumDateModel);
+       // SaleGUI saleGUI = new SaleGUI(albumDateModel);
     }
 
     public static boolean loadAllRecord() {
