@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Happy on 5/3/2017.
  */
-//This class can add and update the data i database for certain columns of data
+//This class can add and update the data in database for certain columns of data
 // columns like; Title column, artist, selling price and consignor ID
 //for the use of an album table data grid in an Album Table GUI
 //used part of movieRate model"hhttps:github.com/minneapolis-edu/Movies" code to set  my albumDateModel
@@ -125,7 +125,7 @@ public class albumDateModel   extends AbstractTableModel {
             fireTableDataChanged();
             return true;
         } catch (SQLException e) {
-            System.out.println("error adding row");
+            System.out.println("Error adding row");
             System.out.println(e);
             return false;
         }
@@ -145,7 +145,7 @@ public class albumDateModel   extends AbstractTableModel {
             fireTableDataChanged();
             //change will go to DB but not reflected in this result set
             // therefore no need to close/re-open result set to see latest data
-            //return true to the calling methods so we konw that the ResultSet was successfully updated and
+            //return true to the calling methods so we know that the ResultSet was successfully updated and
             //it can request a new Resultset for this tablemodel
 
             return true;
@@ -187,13 +187,13 @@ public class albumDateModel   extends AbstractTableModel {
     }
 
 
-    public boolean insertSale(double price, double consignorPay, double consignorOwe) {
+    public boolean insertSale(double price, double consignorPay, double ownerPay) {
         try {
 
             resultSet.moveToInsertRow();
             //resultSet.updateDouble(Main.saleprice, price);
             resultSet.updateDouble("consignorPay", consignorPay);
-            resultSet.updateDouble("ownerPay", consignorOwe);
+            resultSet.updateDouble("ownerPay", ownerPay);
             resultSet.insertRow();
             resultSet.moveToCurrentRow();
             fireTableDataChanged();

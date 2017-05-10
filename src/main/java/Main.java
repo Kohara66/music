@@ -41,7 +41,7 @@ public class Main {
     public final static String consignorName = "ConsignorName";
     public final static String consignorPhoneNumber = "PhoneNumber";
     public final static String consignorPay = "consignorPay";
-    public final static String consignorOwe = "consignorOwe";
+    public final static String consignorOwe = "ownerPay";
 
     //Sale table columns
 
@@ -88,13 +88,15 @@ public class Main {
         System.out.println();
 
 
-        //}
+        //if no error, then start GUI
 
 
         tabbedJframe tabbedJframe = new tabbedJframe();
-        //AlbumGUI albumGUI = new AlbumGUI(albumDateModel);
+       // AlbumGUI albumGUI = new AlbumGUI(albumDateModel);
         //ConsignorGUI consignorGUI = new ConsignorGUI(albumDateModel);
-       // SaleGUI saleGUI = new SaleGUI(albumDateModel);
+        //SaleGUI saleGUI = new SaleGUI(albumDateModel);
+        //ConsignorAlbumSaleGUI consignorAlbumSaleGUI = new ConsignorAlbumSaleGUI(albumDateModel);
+        createTestData();
     }
 
     public static boolean loadAllRecord() {
@@ -337,26 +339,40 @@ public class Main {
 
     public static void createTestData() {
         try {
-            String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Ghost Stones', 'Cold Play', 'Rock', 4.20, FALSE  )";
+            String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUES ('Ghost Stones', 'Cold Play', 'Rock', 4.20, FALSE  )";
             statement.executeUpdate(addsql);
-             //String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Lemode', 'Beyonce', 'R & B', 3.20, FALSE  )";
-             //String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('The Blue Print', 'Jay Z', 'Rap', 5.20, TRUE  )";
-            // String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Hotness', 'Riyana', 'Pop', 2.20, TRUE  )";
-            // String addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Elephant', 'The White Stripe', 'Rock', 6.20, TRUE  )";
+            addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Lemode', 'Beyonce', 'R & B', 3.20, FALSE  )";
+            statement.executeUpdate(addsql);
+            addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('The Blue Print', 'Jay Z', 'Rap', 5.20, TRUE  )";
+            statement.executeUpdate(addsql);
+            addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Hotness', 'Riyana', 'Pop', 2.20, TRUE  )";
+            statement.executeUpdate(addsql);
+            addsql = "INSERT INTO " + Album + "(" + Title + ", " + Artist + ", " + category + "," + sellingPrice + "," + isBasement + ")" + " VALUEs ('Elephant', 'The White Stripe', 'Rock', 6.20, TRUE  )";
+            statement.executeUpdate(addsql);
+
 
             String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('James', '6516449977', 3.50, 2.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('John', '6516444573', 3.50, 2.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Mary', '6516449987', 5.50, 3.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Bob', '6126449972', 6.50, 4.49)";
-           // String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Billyu', '6126449976', 6.50, 7.49)";
+            statement.executeUpdate(addtable);
+            addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('John', '6516444573', 3.50, 2.49)";// String addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + ownerPay + ")" + " Values ('Mary', '6516449987', 5.50, 3.49)";
+            statement.executeUpdate(addtable);
+            addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('Bob', '6126449972', 6.50, 4.49)";
+            statement.executeUpdate(addtable);
+            addtable = "INSERT INTO " + Consignor + " (" + consignorName + ", " + consignorPhoneNumber + ", " + consignorPay + ", " + consignorOwe + ")" + " Values ('Billyu', '6126449976', 6.50, 7.49)";
             statement.executeUpdate(addtable);
 
             String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-04-31', 10.50)";
-           // String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-04', 15.30)";
-           // String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-06', 12.20)";
-           // String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-07', 14.40)";
-            // String addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-04-28', 12.33)";
             statement.executeUpdate(addSale);
+            addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-04', 15.30)";
+
+            statement.executeUpdate(addSale);
+            addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-06', 12.20)";
+            statement.executeUpdate(addSale);
+            addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-05-07', 14.40)";
+            statement.executeUpdate(addSale);
+            addSale = "INSERT INTO " + Sale + "(" + sale_date + ", " + amount + ")" + " VALUES ('2017-04-28', 12.33)";
+            statement.executeUpdate(addSale);
+
+
         }catch (SQLException SQL){
             SQL.printStackTrace();
         }
